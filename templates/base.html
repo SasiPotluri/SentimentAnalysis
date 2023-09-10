@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/jquery.js"></script>
+    <style>
+        nav ul {
+          display: flex;
+          flex-direction: row;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        nav ul li {
+          margin-right: 20px;
+        }
+
+        header {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 28px;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        main {
+            font-family: 'Roboto', Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 20px;
+            transition: color 0.2s ease-in-out;
+        }
+
+        nav ul li a:hover {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h3>My Web Application</h3>
+
+        <nav style="display: flex; flex-direction: column; align-items: center;">
+            <ul>
+                <li><a href="retrieve_tweets/">Home</a></li>
+                <li><a href="my_analysis/">My Analysis</a></li>
+                <li><a href="search/">Search</a></li>
+                <li><a href="settings/">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2023 My Web Application. All rights reserved.</p>
+    </footer>
+</body>
+</html>

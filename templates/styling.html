@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>My Tweets</h1>
+  <div class="tweets-container">
+    {% if tweets %}
+      {% for tweet in tweets %}
+        <div class="tweet">
+          <div class="tweet-header">
+            <div class="tweet-profile-pic">
+              <img src="{{ tweet.user.profile_image_url_https }}" alt="{{ tweet.user.screen_name }}">
+            </div>
+            <div class="tweet-username">{{ tweet.user.screen_name }}</div>
+            <div class="tweet-created-at">{{ tweet.created_at }}</div>
+          </div>
+          <div class="tweet-content">{{ tweet.tweet_text }}</div>
+          <div class="tweet-sentiment-score">
+            <div class="sentiment-icon">
+                {% if tweet.sentiment > 0 %}
+                  <i class="fas fa-smile"></i>
+                {% elif tweet.sentiment < 0 %}
+                  <i class="fas fa-frown"></i>
+                {% else %}
+                  <i class="fas fa-meh"></i>
+              {% endif %}
+            </div>
+            <div class="sentiment-score">
+              {{ tweet.score }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No tweets available.</p>
+    {% endif %}
+  </div>
+{% endblock %}

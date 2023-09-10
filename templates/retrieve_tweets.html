@@ -1,0 +1,113 @@
+
+{% extends 'base.html' %}
+<br>
+{% block content %}
+<!DOCTYPE html>
+
+<head>
+	<title>My Tweets</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f5f8fa;
+		}
+		.tweets-container {
+			max-width: 600px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0px 0px 5px #ccc;
+		}
+		.tweet {
+			display: flex;
+			flex-direction: row;
+			padding: 10px;
+			border-bottom: 1px solid #eee;
+		}
+		.tweet-profile-pic {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			margin-right: 10px;
+			background-color: #ccc;
+		}
+		.tweet-content {
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+		}
+		.tweet-username {
+			font-size: 14px;
+			color: #555;
+			margin: 0;
+		}
+		.tweet-created-at {
+			font-size: 14px;
+			color: #888;
+			margin: 0;
+		}
+		.tweet-sentiment-score {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+		.sentiment-icon {
+			font-size: 20px;
+			margin-right: 5px;
+			color: #1da1f2;
+		}
+		.sentiment-icon i.fas {
+			color: #f39c12;
+		}
+		.sentiment-score {
+			font-size: 14px;
+			color: #888;
+			margin: 0;
+		}
+		.fa-smile {
+			color: #2ecc71;
+		}
+		.fa-frown {
+			color: #e74c3c;
+		}
+		.fa-meh {
+			color: #3498db;
+		}
+	</style>
+</head>
+<body>
+	<div class="tweets-container">
+		<h1>My Tweets</h1>
+		{% if tweets %}
+			{% for tweet in tweets %}
+				<div class="tweet">
+					<div class="tweet-header">
+						<div class="tweet-profile-pic">
+							<img src="{{ tweet.user.profile_image_url_https }}" alt="{{ tweet.user.screen_name }}">
+						</div>
+						<div class="tweet-username">{{ tweet.user.screen_name }}</div>
+						<div class="tweet-created-at">{{ tweet.created_at }}</div>
+					</div>
+					<div class="tweet-content">{{ tweet.tweet_text }}</div>
+					<div class="tweet-sentiment-score">
+						<div class="sentiment-icon">
+							{% if tweet.sentiment > 0 %}
+								<i class="fas fa-smile"></i>
+							{% elif tweet.sentiment < 0 %}
+								<i class="fas fa-frown"></i>
+							{% else %}
+								<i class="fas fa-meh"></i>
+							{% endif %}
+						</div>
+						<div class="sentiment-score">{{ tweet.score }}</div>
+					</div>
+				</div>
+			{% endfor %}
+		{% else %}
+			<p>No tweets available.</p>
+		{% endif %}
+	</div>
+</body>
+{% endblock %}

@@ -1,0 +1,10 @@
+<h1>Tweet Analysis</h1>
+<ul>
+  {% for tweet in tweets %}
+  <li>
+    <p><strong>Tweet:</strong> {{ tweet.text }}</p>
+    <p><strong>Created at:</strong> {{ tweet.created_at }}</p>
+    <p><strong>Sentiment:</strong> {{ tweet.sentiment }}</p>
+  </li>
+  {% endfor %}
+</ul>

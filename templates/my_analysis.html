@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Analysis</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>My Analysis</h1>
+    <div>
+        <h2>Pie Chart</h2>
+        <img src="data:image/png;base64,{{ pie_chart_image }}" alt="Pie Chart">
+    </div>
+    <div>
+        <h2>Wordcloud</h2>
+        <img src="data:image/png;base64,{{ wordcloud_image }}" alt="Wordcloud">
+    </div>
+</body>
+</html>
